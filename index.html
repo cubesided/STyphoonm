@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>STyphoonm</title>
+  <meta name="description" content="WebDesktop Manager">
+  <meta name="generator" content="NoteTab Light 7.2 (www.notetab.com)">
+  <meta name="created" content="2024-11-24">
+  <meta name="author" content="Cooper Greene">
+  <link rel="stylesheet" href="main.css">
+
+  <!-- Adds support for HTML5 elements in IE6-8 -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+<h1>STyphoonm</h1>
+
+<button id="btn1" style="margin:10px">Create Window</button>
+<br/>
+<button id="btn2" style="margin:10px">Create window with linked page</button>
+<hr>
+<p>Created on November 24, 2024</p>
+
+<script>
+
+const btn1 = document.getElementById("btn1");
+const btn2 = document.getElementById("btn2");
+
+var counter = 0;
+
+btn1.addEventListener("click", function() {
+	counter++;
+	const windowclass = document.createElement("div");
+
+	windowclass.id = "window" + counter ;
+	windowclass.style.width = "100px";
+	windowclass.style.height = "100px";
+
+	const domtitle = document.createElement("div");
+	domtitle.id = "domtitle" + counter;
+
+	domtitle.innerHTML += "Window" + counter;	
+
+	document.body.appendChild(windowclass).appendChild(domtitle);
+	dragElement(document.getElementById("window" + counter));
+});
+
+btn2.addEventListener("click", function() {
+	counter++;
+	const windowclass = document.createElement("div");
+
+	windowclass.innerHTML = '<iframe src="http://www.example.com" name="GOOGLE"></iframe>';
+
+	windowclass.id = "window" + counter ;
+	windowclass.style.height = "100px";
+
+	const domtitle = document.createElement("div");
+	domtitle.id = "domtitle" + counter;
+
+	domtitle.innerHTML += "Inline HTML Window " + counter;	
+
+	document.body.appendChild(windowclass).appendChild(domtitle);
+	dragElement(document.getElementById("window" + counter));
+});
+
+
+
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "domtitle")) {
+    // if present, the header is where you move the DIV from:
+    document.getElementById(elmnt.id + "domtitle").onmousedown = dragMouseDown;
+  } else {
+    // otherwise, move the DIV from anywhere inside the DIV:
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    // stop moving when mouse button is released:
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+</script>
+
+</body>
+</html>
