@@ -2,7 +2,7 @@
 ![An image of STyphoonm running in Internet Explorer 11 on Windows 10](https://github.com/user-attachments/assets/a31e1b76-f990-4ff0-9fef-d5c2fc97cb26)
 
 > [!NOTE]
-> Window rendering has been fixed, shorter code can be copied and pasted instead of large function blocks
+> Window rendering has been fixed, shorter code can be copied and pasted instead of large function blocks.     
 > This should arive in the src code by the 30th.
 
 STyphoonm is a project I will be working on for the next couple of months
