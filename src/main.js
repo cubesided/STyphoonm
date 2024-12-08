@@ -1,21 +1,19 @@
 window.onload = function() {
+
  const btn1 = document.getElementById("btn1");
  const btn2 = document.getElementById("btn2");
 
- var counter = 0;
+ var wncounter = 0;
+var DCount = 0;
 
  // Create Web Manager Window
 
  btn2.addEventListener("click", function() {
- 	paintWindow("file:///C:/", "Web Manager");
- });
-
- btn1.addEventListener("click", function() {
- 	paintWindow("builtinapp/webinweb.html", "Web Access");
+ 	DrawDOMWindow("file:///C:/", "Web Manager");
  });
 
  function paintWindow(lnk, title) {
- 	counter++;
+ 	wncounter++;
  	const windowclass = document.createElement("div");
 
  	windowclass.innerHTML = '<iframe src="' + lnk + '" name="WINDOWLNK"></iframe>';
@@ -27,11 +25,23 @@ window.onload = function() {
  	const domtitle = document.createElement("div");
  	domtitle.id = "domtitle" + counter;
 
- 	domtitle.innerHTML += title	
+ 	domtitle.innerHTML += title;
 
- 	document.body.appendChild(windowclass).appendChild(domtitle);
- 	dragElement(document.getElementById("window" + counter));
+ 	document.body.appendChild(domtitle).appendChild(windowclass);
+ 	dragElement(document.getElementById("window" + wncounter));
  }
+
+function DrawDOMWindow(lnk, title) {
+ 	DCount++;
+ 	const DOMWindow = document.createElement("table");
+
+ 	DOMWindow.innerHTML = '<table class="tbl"><tbody><tr><td><div class="mover" style="width: 324px; height: 185px;"><div class="moverIco"></div></div></td><td></td></tr><tr><td></td><td><div class="dialog"><div class="head">Dialog</div><iframe src="file:///C:/" name="WINDOWLNK" /></div></td></tr></tbody></table>';
+
+ 	//domtitle.innerHTML += title;
+
+ 	document.body.appendChild(DOMWindow);
+ }
+
 
 
  function dragElement(elmnt) {
@@ -39,12 +49,18 @@ window.onload = function() {
    domtitle = domtitle.replace(/\D/g,'');
    domtitle = "domtitle" + domtitle;
 
+	for (let i=0; i<99999; i++) { 
+setTimeout(function() { 
+    elmnt.style.width = elmnt.children("WINDOWLNK").style.width;
+}, 500 * i); 
+} 
 
    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
    if (document.getElementById(domtitle)) {
      // if present, the header is where you move the DIV from:
      document.getElementById(domtitle).onmousedown = dragMouseDown;
    } else {
+	console.log("t");
      // otherwise, move the DIV from anywhere inside the DIV:
      //elmnt.onmousedown = dragMouseDown;
    }
