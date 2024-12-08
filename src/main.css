@@ -1,9 +1,6 @@
-div[id^="window"] {
-  position: absolute;
-  z-index: 2;
-  background-color: #f1f1f1;
-  border: 1px solid #d3d3d3;
-  text-align: center;
+:root {
+--resizer-size:18px;
+--border-size:3px;
 }
 
 iframe {
@@ -12,13 +9,77 @@ iframe {
     height:100%;
 }
 
-div[id^="domtitle"] {
-  padding: 10px;
-  cursor: move;
-  background-color: #2196F3;
-  color: #fff;
-  position: relative;
-  left: 0;
-  bottom: 0;
-  width: 97.5%;
+.area {
+position:relative;
+background-color:white;
+width:700px;
+height:700px;
+font-size:14px;
+line-height:30px
+}
+.tbl {
+position:absolute;
+border-collapse:collapse;
+pointer-events:none
+}
+.tbl TD {
+padding:0
+}
+.mover {
+position:relative;
+background-color:yellow;
+top:0;
+left:0;
+width:200px; /*Default left*/
+height:100px; /*Default top*/
+resize:both;
+overflow:auto;
+margin-bottom:calc(var(--border-size)*-1 - var(--resizer-size));
+margin-right:calc(var(--border-size)*-1 - var(--resizer-size));
+z-index: 1;
+pointer-events:all;
+clip-path: polygon(calc(100% - var(--resizer-size)) calc(100% - var(--resizer-size)), 100% calc(100% - var(--resizer-size)), 100% 100%, calc(100% - var(--resizer-size)) 100%);
+/*min-width:40px;  4x Limits dialog position
+max-width:300px;
+min-height:40px;
+max-height:460px */
+}
+.moverIco {
+position:absolute;
+bottom:0px;
+right:0px;
+width:var(--resizer-size);
+height:var(--resizer-size);
+background:black;
+background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="white" \
+  d="M13,11H18L16.5,9.5L17.92,8.08L21.84,12L17.92,15.92L16.5,14.5L18,13H13V18L14.5,16.5L15.92,17.92L12,21.84L8.08,17.92L9.5,16.5\
+  L11,18V13H6L7.5,14.5L6.08,15.92L2.16,12L6.08,8.08L7.5,9.5L6,11H11V6L9.5,7.5L8.08,6.08L12,2.16L15.92,6.08L14.5,7.5L13,6V11Z" /></svg>')
+}
+.dialog {
+position:relative;
+top:0;
+left:0;
+width:200px; /*Default width*/
+height:120px; /*Default height*/
+border:var(--border-size) solid green;
+background-color:#EEE;
+resize:both;
+overflow:auto;
+pointer-events:all;
+text-align:center;
+min-width:150px; /*4x Limits dialog size*/
+max-width:800px;
+min-height:100px;
+max-height:600px
+}
+.dialog .head {
+background:green;
+color:white;
+font-weight:bold;
+padding-left:calc(var(--border-size) + var(--resizer-size));;
+font-family:sans-serif;
+font-size:12px;
+height:calc(var(--border-size) + var(--resizer-size));;
+line-height:var(--resizer-size);
+text-align:left
 }
