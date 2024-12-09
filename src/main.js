@@ -1,16 +1,9 @@
-window.onload = function() {
 
  const btn1 = document.getElementById("btn1");
  const btn2 = document.getElementById("btn2");
 
  var wncounter = 0;
 var DCount = 0;
-
- // Create Web Manager Window
-
- btn2.addEventListener("click", function() {
- 	DrawDOMWindow("file:///C:/", "Web Manager");
- });
 
  function paintWindow(lnk, title) {
  	wncounter++;
@@ -31,13 +24,14 @@ var DCount = 0;
  	dragElement(document.getElementById("window" + wncounter));
  }
 
-function DrawDOMWindow(lnk, title) {
+function DrawDOMWindow(lnk, title, maxw, maxh, bound) {
  	DCount++;
  	const DOMWindow = document.createElement("table");
 
- 	DOMWindow.innerHTML = '<table class="tbl"><tbody><tr><td><div class="mover" style="width: 324px; height: 185px;"><div class="moverIco"></div></div></td><td></td></tr><tr><td></td><td><div class="dialog"><div class="head">Dialog</div><iframe src="file:///C:/" name="WINDOWLNK" /></div></td></tr></tbody></table>';
+ 	DOMWindow.innerHTML = '<tbody><tr><td><div class="mover" style="width: 324px; height: 185px;"><div class="moverIco"></div></div></td><td></td></tr><tr><td></td><td><div class="dialog"><div class="head">' + title + '</div><iframe src="' + lnk + '" name="WINDOWLNK" /></div></td></tr></tbody>';
 
  	//domtitle.innerHTML += title;
+	DOMWindow.classList.add("tbl");
 
  	document.body.appendChild(DOMWindow);
  }
@@ -95,4 +89,3 @@ setTimeout(function() {
      document.onmousemove = null;
    }
  }
-}
