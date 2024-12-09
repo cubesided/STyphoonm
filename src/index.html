@@ -8,7 +8,7 @@
   <meta name="created" content="2024-11-24">
   <meta name="author" content="Cooper Greene">
   <link rel="stylesheet" href="main.css">
-  <script type="text/javascript" src="main.js"></script>
+  <script type = "text/javascript" src="main.js"></script>
 
   <!-- Adds support for HTML5 elements in IE6-8 -->
   <!--[if lt IE 9]>
@@ -18,12 +18,11 @@
 
 <body>
 
-<h1>STyphoonm <button id="btn2" style="margin:10px">Web Manager</button></h1>
-
-
-<script type="text/javascript">
-  
-</script>
+<h1 class="topbar">STyphoonm 
+<button id="btn2" style="margin:10px" onclick="DrawDOMWindow('file:///C:/', 'Web Manager')">Web Manager</button>
+<button id="btn2" style="margin:10px" onclick="DrawDOMWindow('./dashapp/styver.html', 'About STyphoonm')">About</button>
+<button id="btn3" style="margin:10px" onclick="DrawDOMWindow('https://www.google.com/search?igu=1', 'Google Search')">Google Search</button>
+</h1>
 
 </body>
 </html>
