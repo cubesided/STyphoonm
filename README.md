@@ -15,8 +15,8 @@ I hope that something as simple as this can turn into a fully fledged operating 
 
 ### Checklist & Achivements:
 - [X] Initial Building Blocks (_24/11/2024_)
-- [X] __Milestone 1__ (_09/12/2024_)
 - [X] Resizable windows
+- [X] __Milestone 1__ (_09/12/2024_)
 - [ ] Top bar, Window Shortcuts Panel (start menu equivalent)
 - [ ] Backgrounds, Settings
 - [ ] Port to ElectronJS
