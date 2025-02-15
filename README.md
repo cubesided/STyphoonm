@@ -2,9 +2,7 @@
 ![An image of STyphoonm Milestone 1 running in Google Chrome on Windows 10](https://github.com/user-attachments/assets/d8b99ffc-b62a-410b-b669-deea45d49d6f)
 
 > [!IMPORTANT]
-> STyphoonm is being replaced by [MiniNT](https://github.com/ugman21/minint), Windowing System/Shell for Windows PE.
-> 
-> Ill keep the repository open in case anyone wants to take over.
+> STyphoonm has been replaced by [MiniNT](https://github.com/ugman21/minint), Windowing System/Shell for Windows PE.
 
 After 3 different window rendering changes (thanks robert máslo from stackoverflow) I have now finally gotten full resizable windows (only in one corner) working.
 <br>
